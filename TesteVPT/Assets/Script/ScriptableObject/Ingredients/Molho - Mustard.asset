@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Vegetariano
-  m_EditorClassIdentifier: Assembly-CSharp::Hamburguer
-  nomeHamburguer: Vegetariano
-  spriteHamburguer: {fileID: 21300000, guid: 94e49194740535d439a1fb591cecd0f2, type: 3}
-  ingredientsHamburguer: []
+  m_Script: {fileID: 11500000, guid: e41fa8c0814ddb246af05ef65d4d6981, type: 3}
+  m_Name: Molho - Mustard
+  m_EditorClassIdentifier: 
+  nameIngredients: Mustard
+  spriteIngredients: {fileID: -608834736, guid: 7def55896ef0df340a8dea1cdb88e7b2, type: 3}

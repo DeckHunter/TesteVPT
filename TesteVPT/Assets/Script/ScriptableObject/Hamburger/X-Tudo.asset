@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42244bc80b58afb4399adec2001e1526, type: 3}
-  m_Name: Boi
+  m_Name: X-Tudo
   m_EditorClassIdentifier: 
-  nomeHamburger: X-Boi
+  nomeHamburger: X-Tudo
   spriteHamburger: {fileID: 21300000, guid: 94e49194740535d439a1fb591cecd0f2, type: 3}
   ingredientsHamburger:
-  - {fileID: 11400000, guid: ab0a678a36797f546a7d90f217156c50, type: 2}
-  - {fileID: 11400000, guid: 8458dd51517c54d47a0f0c020b59d5e5, type: 2}
-  - {fileID: 11400000, guid: a87c6e0464139c64391be7f62200ca02, type: 2}
+  - {fileID: 11400000, guid: 1feccd9c071ae7447b79aff3bda6ce30, type: 2}
+  - {fileID: 11400000, guid: e74cb7b5b37ea7248bd3dee54efbf75b, type: 2}
+  - {fileID: 11400000, guid: ff109063bc8de954d942f41cd9551cbc, type: 2}
   - {fileID: 11400000, guid: ca37db94226952147b3ee6f54857238a, type: 2}
-  - {fileID: 11400000, guid: a9b9c9324a52aa2419becc21aeaf08e6, type: 2}
+  - {fileID: 11400000, guid: c9ead1c1a5efcb54a81d79a12c9284a9, type: 2}

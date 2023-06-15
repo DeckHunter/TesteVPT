@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-    public List<Hamburguer> hamburguers;
+    public List<Hamburger> hamburguers;
     public List<Ingredients> ingredients;
 
-    public Hamburguer hamburguerCurrent;
-    public Hamburguer hamburguerOrder;
+    public Hamburger hamburguerCurrent;
+    public Hamburger hamburguerOrder;
 
     public List<Image> ingredientSlots;
     public List<Image> sauceSlots;
@@ -24,25 +24,51 @@ public class GameManager : MonoBehaviour
     public int score;
     public int bonus;
 
+    public GameObject revenueMain;
+    public GameObject revenuePrefab;
+    public List<GameObject> revenueComplete;
+
+    public TextMeshProUGUI nameHamburguer;
+
     void Start()
     {
-        relogio = FindObjectOfType<Relogio>();
-        screenGameOver.SetActive(false);
-    }
+        //relogio = FindObjectOfType<Relogio>();
+        //screenGameOver.SetActive(false);
 
-    void Update()
-    {
-        if (relogio.minutoAtual == timer){
-            gameOver();
+        selectHamburguer();
+        listReveune();
+    }
+    public void listReveune() {
+        foreach (Ingredients item in hamburguerOrder.ingredientsHamburger)
+        {
+            GameObject revenue = Instantiate(revenuePrefab, revenueMain.transform.position, revenueMain.transform.rotation);
+            revenue.GetComponent<Revenue>().SetInfo(item.spriteIngredients, "+1");
+            revenue.transform.SetParent(revenueMain.transform);
+
+            revenueComplete.Add(revenue);
         }
+    }
+    void Update()
+    { 
+        //if (relogio.minutoAtual == timer){
+        //    gameOver();
+        //}
+    }
+    public void clearRevenueList(){
+        foreach (GameObject item in revenueComplete)
+        {
+            Destroy(item);
+        }
+
+        revenueComplete.Clear();
     }
     public void finalizeOrder(){
 
         bool isCorret = true;
 
-        foreach (Ingredients item in hamburguerCurrent.ingredientsHamburguer)
+        foreach (Ingredients item in hamburguerCurrent.ingredientsHamburger)
         {
-            if (hamburguerOrder.ingredientsHamburguer.Contains(item))
+            if (hamburguerOrder.ingredientsHamburger.Contains(item))
             {
                 isCorret = true;
             }
@@ -58,33 +84,50 @@ public class GameManager : MonoBehaviour
         else {
             score -= 5;
         }
-        scoreText.text = score.ToString();
-    }
 
+        scoreText.text = score.ToString();
+        hamburguerCurrent.ingredientsHamburger.Clear();
+
+        clearRevenueList();
+        selectHamburguer();
+        listReveune();
+    }
+    public void selectHamburguer(){
+        hamburguerOrder = hamburguers[Random.Range(0, hamburguers.Count)];
+        nameHamburguer.text = hamburguerOrder.nomeHamburger;
+    }
     public void gameOver() {
         screenGameOver.SetActive(true);
     }
+    public void craftingHamburguer(Image s){
+        foreach (Ingredients item in ingredients)
+        {
+            if (item.spriteIngredients == s.sprite) {
+                hamburguerCurrent.ingredientsHamburger.Add(item);
+            }
+        }
+    }
     public void usedBarbecue(){
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[0]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[0]);
     }
     public void usedMustard()
     {
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[1]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[1]);
     }
     public void usedPepper()
     {
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[2]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[2]);
     }
     public void usedWasabi()
     {
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[3]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[3]);
     }
     public void usedMayonnaise()
     {
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[4]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[4]);
     }
     public void usedKetchup()
     {
-        hamburguerCurrent.ingredientsHamburguer.Add(ingredients[5]);
+        hamburguerCurrent.ingredientsHamburger.Add(ingredients[5]);
     }
 }

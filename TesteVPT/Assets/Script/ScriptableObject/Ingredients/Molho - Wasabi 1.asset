@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e41fa8c0814ddb246af05ef65d4d6981, type: 3}
-  m_Name: Carne - Porco 1
+  m_Name: Molho - Wasabi 1
   m_EditorClassIdentifier: 
-  nameIngredients: Boi
-  spriteIngredients: {fileID: -684347614, guid: 8231d274782265043b4d8929beae9c03, type: 3}
+  nameIngredients: Wasabi
+  spriteIngredients: {fileID: 224833539, guid: 7def55896ef0df340a8dea1cdb88e7b2, type: 3}
