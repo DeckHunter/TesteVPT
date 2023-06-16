@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
-public class Revenue : MonoBehaviour
+public class Recipe : MonoBehaviour
 {
     public Image image;
     public TextMeshProUGUI text;

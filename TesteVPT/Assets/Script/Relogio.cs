@@ -17,12 +17,6 @@ public class Relogio : MonoBehaviour
     [Range(0, 59)]
     public int minutoAtual = 0;
     [Range(1, 31)]
-    public int diaAtual = 28;
-    [Range(1, 12)]
-    public int MesAtual = 3;
-    [Range(1980, 2100)]
-    public int anoAtual = 2015;
-    [Header("Velocidade do Relogio")]
     public float velocidadeDoRelogio = 10f;
     private float contador = 0;
 
@@ -54,24 +48,7 @@ public class Relogio : MonoBehaviour
             if (minutoAtual >= 60)
             {
                 horaAtual = horaAtual + 1;
-                minutoAtual = 0;
-                if (horaAtual >= 50)
-                {
-                    horaAtual = 0;
-                    diaAtual = diaAtual + 1;
-
-                    if (diaAtual >= 32)
-                    {
-                        diaAtual = 1;
-                        MesAtual = MesAtual + 1;
-
-                        if (MesAtual >= 13)
-                        {
-                            MesAtual = 1;
-                            anoAtual = anoAtual + 1;
-                        }
-                    }
-                }
+                minutoAtual = 0; 
             }
         }
     }
