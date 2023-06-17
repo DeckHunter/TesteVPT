@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public List<int> listNumbers = new List<int>();
     int number;
+    public Sprite hamburgerSprite;
+    public Hamburger hamburgerEmpty;
 
     void Start()
     {
@@ -61,16 +63,38 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (relogio.horaAtual >= 2)
-        {
-            openGameOver();
+        if (relogio != null) {
+            if (relogio.horaAtual >= 2)
+            {
+                openGameOver();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                menu();
+            }
         }
+    }
+    public Hamburger hamburgerRandom(){
+
+        hamburgerEmpty.spriteHamburger = hamburgerSprite;
+        hamburgerEmpty.nomeHamburger = "X-Cliente";
+
+        hamburgerEmpty.ingredientsHamburger.Clear();
+        hamburgerEmpty.ingredientsHamburger.Add(ingredients[Random.Range(0,2)]);
+
+        for (int i = 1; i < 4; i++)
+        {
+            hamburgerEmpty.ingredientsHamburger.Add(ingredients[Random.Range(2, ingredients.Count)]);
+        }
+        hamburgerEmpty.ingredientsHamburger.Add(sauces[Random.Range(0, sauces.Count)]);
+
+
+        return hamburgerEmpty;
     }
     public void initGame(){
 
         screenKitchen.SetActive(true);
         relogio = FindObjectOfType<Relogio>();
-
+        screenGameOver.SetActive(false);
         screenMenu.SetActive(false);
 
         relogio.velocidadeDoRelogio = 1;
@@ -100,9 +124,10 @@ public class GameManager : MonoBehaviour
         bonus = 1;
     }
     public void menu() {
-        screenMenu.SetActive(true);
-        screenGameOver.SetActive(false);
+
+        clearRecipeList();
         screenKitchen.SetActive(false);
+        screenMenu.SetActive(true);    
     }
     public void reloadGame() {
 
@@ -178,8 +203,18 @@ public class GameManager : MonoBehaviour
         organizeIngredients();
     }
     public void selectHamburguer(){
-        hamburguerOrder = hamburguers[Random.Range(0, hamburguers.Count)];
-        nameHamburguer.text = hamburguerOrder.nomeHamburger;
+        int i = Random.Range(0,2);
+        if (i == 0)
+        {
+            hamburguerOrder = hamburguers[Random.Range(0, hamburguers.Count)];
+            nameHamburguer.text = hamburguerOrder.nomeHamburger;
+        }
+        else {
+            Hamburger n = hamburgerRandom();
+
+            hamburguerOrder = n;
+            nameHamburguer.text = n.nomeHamburger;
+        }
     }
     
     public void generateNumber()
